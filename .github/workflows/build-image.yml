@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: install dependencies
-        run: apt install qemu-utils debootstrap dosfstools
+        run: sudo apt install qemu-utils debootstrap dosfstools
 
       - name: build
         run: sudo ./build-debian-image

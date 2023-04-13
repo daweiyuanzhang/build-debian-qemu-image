@@ -18,3 +18,8 @@ jobs:
       - name: ls
         run: ls -la
 
+      - name: Save qemu disk
+        uses: actions/upload-artifact@v3
+        with:
+          name: qemu disk
+          path: debian-buster.qcow2

@@ -1,0 +1,20 @@
+---
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: install dependencies
+        run: apt install qemu-utils debootstrap dosfstools
+
+      - name: build
+        run: sudo ./build-debian-image
+
+      - name: ls
+        run: ls -la
+

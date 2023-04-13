@@ -29,7 +29,7 @@ fi
 # These require command to get and are needed for the usage message,
 # which is why they are the only defaults pulled out as a variable
 # like this.
-DEFAULT_SUITE="$( grep -s -m1 '^deb ' /etc/apt/sources.list | awk '{print $3}' )"
+DEFAULT_SUITE=buster
 DEFAULT_DOMAIN="$( hostname -d )"
 # In MiB.  How large should swap be? First 271MiB is used for system (boot)
 # partitions and reserved space, so 753 takes us to the 1024MiB (1GiB)

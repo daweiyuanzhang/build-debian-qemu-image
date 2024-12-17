@@ -287,7 +287,7 @@ echo "--------------------------------------------"
 
 echo "Configuring networking"
 echo "...lo"
-cat - >>/etc/network/interaces <<S2EOF
+cat - > /etc/network/interaces <<S2EOF
 
 auto lo
 iface lo inet loopback

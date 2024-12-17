@@ -20,7 +20,7 @@ jobs:
         run: sudo apt install qemu-utils debootstrap dosfstools
 
       - name: build
-        run: sudo ./build-debian-image
+        run: sudo ./build-debian-image -s bookworm
 
       - name: ls
         run: ls -la

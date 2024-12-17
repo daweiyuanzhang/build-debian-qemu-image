@@ -348,6 +348,11 @@ apt-get -qq -y install locales console-setup
 
 echo "--------------------------------------------"
 
+echo "Installing packages"
+apt-get -qq -y install systemd
+
+echo "--------------------------------------------"
+
 echo "Installing kernel"
 apt-get -qq -y install linux-image-amd64
 

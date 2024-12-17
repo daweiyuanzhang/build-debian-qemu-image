@@ -287,14 +287,14 @@ echo "--------------------------------------------"
 
 echo "Configuring networking"
 echo "...lo"
-cat - > /etc/network/interaces <<S2EOF
+cat > /etc/network/interaces <<S2EOF
 
 auto lo
 iface lo inet loopback
 S2EOF
 
 echo "...enp1s0"
-cat - >/etc/network/interfaces.d/enp1s0 <<S2EOF
+cat >/etc/network/interfaces.d/enp1s0 <<S2EOF
 allow-hotplug enp1s0
 iface enp1s0 inet dhcp
 S2EOF
@@ -303,7 +303,7 @@ echo "Configuring hostname"
 echo "$NAME" > /etc/hostname
 
 echo "Setting up /etc/hosts"
-cat - >/etc/hosts <<S2EOF
+cat >/etc/hosts <<S2EOF
 127.0.0.1       localhost
 127.0.1.1       $NAME.$DOMAIN_NAME $NAME
 

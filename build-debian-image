@@ -347,20 +347,12 @@ apt-get -qq -y install linux-image-amd64
 
 echo "--------------------------------------------"
 
-echo "Installing bootloader"
-apt-get -qq -y install grub-efi-amd64
-# Add console=ttyS0 so we get early boot messages on the serial console.
-sed -i -e 's/^\\(GRUB_CMDLINE_LINUX="[^"]*\\)"$/\\1 console=ttyS0"/' /etc/default/grub
-cat - >>/etc/default/grub <<S2EOF
-GRUB_TERMINAL="serial"
-GRUB_SERIAL_COMMAND="serial --unit=0 --speed=9600 --stop=1"
-S2EOF
-grub-install --target=x86_64-efi
+echo ">>>>>> installing bootloader"
+apt-get -qq -y install grub2
+grub-install ${NBD_DEV}
+echo "GRUB_DISABLE_OS_PROBER=true" >> /etc/default/grub
+sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash net.ifnames=0 biosdevname=0 ipv6.disable=1" /' /etc/default/grub
 update-grub
-
-echo "Copying fallback bootloader"
-mkdir /boot/efi/EFI/BOOT
-cp /boot/efi/EFI/debian/fbx64.efi /boot/efi/EFI/BOOT/bootx64.efi
 
 echo "--------------------------------------------"
 

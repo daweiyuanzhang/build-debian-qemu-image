@@ -276,8 +276,8 @@ echo "--------------------------------------------"
 
 echo "Setting timezone"
 debconf-set-selections <<S2EOF
-tzdata tzdata/Areas select Europe
-tzdata tzdata/Zones/Europe select London
+tzdata tzdata/Areas select Asia
+tzdata tzdata/Zones/Asia select Shanghai
 S2EOF
 # This is necessary as tzdata will assume these are manually set and override the debconf values with their settings
 rm -f /etc/localtime /etc/timezone
@@ -288,7 +288,7 @@ echo "--------------------------------------------"
 echo "Configuring networking"
 echo "...lo"
 mkdir -p /etc/network/
-cat > /etc/network/interaces <<S2EOF
+cat - >>/etc/network/interaces <<S2EOF
 
 auto lo
 iface lo inet loopback
@@ -296,7 +296,7 @@ S2EOF
 
 echo "...enp1s0"
 mkdir -p /etc/network/interfaces.d/
-cat >/etc/network/interfaces.d/enp1s0 <<S2EOF
+cat - >/etc/network/interfaces.d/enp1s0 <<S2EOF
 allow-hotplug enp1s0
 iface enp1s0 inet dhcp
 S2EOF
@@ -305,7 +305,7 @@ echo "Configuring hostname"
 echo "$NAME" > /etc/hostname
 
 echo "Setting up /etc/hosts"
-cat >/etc/hosts <<S2EOF
+cat - >/etc/hosts <<S2EOF
 127.0.0.1       localhost
 127.0.1.1       $NAME.$DOMAIN_NAME $NAME
 

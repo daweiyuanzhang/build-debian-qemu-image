@@ -237,7 +237,7 @@ if [[ -z "$SKIP_DEBOOTSTRAP" ]]
 then
 	echo "Bootstrapping debian"
 	# XXX Hardcoded to x86_64 architecture but at the moment I do not want to run anything else.
-	debootstrap --arch amd64 --include=salt-minion $SUITE /mnt http://deb.debian.org/debian
+	debootstrap --arch amd64 --variant=minbase $SUITE /mnt http://deb.debian.org/debian
 fi
 
 echo "Mounting proc, dev and sys"
